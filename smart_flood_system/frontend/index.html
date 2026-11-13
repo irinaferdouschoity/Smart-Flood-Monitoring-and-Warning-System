@@ -1,0 +1,109 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Smart Flood Monitoring and Warning System</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Smart Flood Monitoring and Warning System</h1>
+            <p>NASA Earth-observation based monitoring</p>
+        </div>
+
+        <button id="refresh" type="button">Refresh NASA data</button>
+    </header>
+
+    <main>
+        <!-- City monitoring controls -->
+        <section class="toolbar">
+            <label for="locations">
+                Location
+                <select id="locations"></select>
+            </label>
+
+            <button id="predict" type="button">Run prediction</button>
+
+            <span id="status" role="status" aria-live="polite">Ready</span>
+        </section>
+
+        <!-- Monitoring cards -->
+        <section class="cards">
+            <div>
+                <small>Model risk</small>
+                <strong id="risk">--</strong>
+            </div>
+
+            <div>
+                <small>Model flood probability</small>
+                <strong id="prob">--</strong>
+            </div>
+
+            <div>
+                <small>Rain 24h</small>
+                <strong id="r24">--</strong>
+            </div>
+
+            <div>
+                <small>Rain 7 days</small>
+                <strong id="r7">--</strong>
+            </div>
+
+            <div>
+                <small>Historical rainfall indicator</small>
+                <strong id="rainfallIndicator">--</strong>
+                <small id="rainfallDetails">Select a location</small>
+            </div>
+        </section>
+
+        <!-- Map, charts, and flood history -->
+        <section class="grid">
+            <article class="panel wide">
+                <h2>Risk map</h2>
+                <div id="map"></div>
+            </article>
+
+            <article class="panel">
+                <h2>Rainfall</h2>
+                <canvas id="rain"></canvas>
+            </article>
+
+            <article class="panel">
+                <h2>Temperature</h2>
+                <canvas id="temp"></canvas>
+            </article>
+
+            <article class="panel">
+                <h2>Humidity</h2>
+                <canvas id="humidity"></canvas>
+            </article>
+
+            <article class="panel">
+                <h2>Flood history</h2>
+                <div id="history"></div>
+            </article>
+        </section>
+
+        <footer>
+            Historical rainfall indicators describe unusual rainfall,
+            not confirmed flood predictions. Flood predictions should
+            be evaluated before being used for operational warnings.
+        </footer>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
